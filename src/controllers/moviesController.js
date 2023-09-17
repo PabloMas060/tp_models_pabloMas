@@ -11,8 +11,17 @@ module.exports = {
             })
             .catch((error) => console.log(error))
     },
-    new: (req, res) => {
-        return res.send('Peliculas de estreno')
+    new: (req, res) => {    
+
+        db.Movie.findAll({
+            order : [['release_date','DESC']]
+        })
+            .then(movies => {
+               return res.render('newestMovies',{              
+                movies
+               })
+            })  
+            .catch(error => console.log(error))
 
     },
     recomended: (req, res) => {

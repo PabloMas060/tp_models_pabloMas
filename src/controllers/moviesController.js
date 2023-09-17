@@ -11,30 +11,41 @@ module.exports = {
             })
             .catch((error) => console.log(error))
     },
-    new: (req, res) => {    
+    new: (req, res) => {
 
         db.Movie.findAll({
-            order : [['release_date','DESC']]
+            order: [['release_date', 'DESC']]
         })
             .then(movies => {
-               return res.render('newestMovies',{              
-                movies
-               })
-            })  
+                return res.render('newestMovies', {
+                    movies
+                })
+            })
             .catch(error => console.log(error))
 
     },
     recomended: (req, res) => {
-        return res.send('peliculas recomendadas')
+
+        db.Movie.findAll({
+            order: [['release_date', 'DESC']],
+            limit: 5
+        })
+            .then((movies) => {
+                return res.render('recommendedMovies', {
+                    movies
+                })
+            })
+            .catch(error => console.log(error))
     },
+
     detail: (req, res) => {
 
 
         const id = req.params.id;
         db.Movie.findByPk(id)
             .then((movie) => {
-                if(movie) {
-                    return res.render('moviesDetail',{
+                if (movie) {
+                    return res.render('moviesDetail', {
                         movie
                     })
                 }

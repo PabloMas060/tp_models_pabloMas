@@ -8,7 +8,7 @@ module.exports = {
                 genres
             })
         })
-        .catch(error => console.log(error);)
+        .catch(error => console.log(error))
     },
     detail : (req,res) => {
         const id = req.params.id

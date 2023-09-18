@@ -13,11 +13,12 @@ module.exports = (sequelize, dataTypes) => {
         allowNull : false
       },
       ranking : {
-        type : dataTypes.DECIMAL(3,1).UNSIGNED,
-        allowNull : false
+        type : dataTypes.INTEGER.UNSIGNED,
+        allowNull : false,
+        unique: true
       },
       active : {
-        type : dataTypes.INTEGER,
+        type : dataTypes.BOOLEAN,
         allowNull : false,
         defaultValue : 1
       }

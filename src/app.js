@@ -9,6 +9,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const moviesRouter = require('./routes/moviesRoutes');
 const genresRouter = require('./routes/genresRoutes');
+const actorsRouter = require('./routes/actorsRoutes');
 
 
 const app = express();
@@ -26,6 +27,8 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/', indexRouter);
 app.use('/movies', moviesRouter);
 app.use('/genres', genresRouter);
+app.use('/actors', actorsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
